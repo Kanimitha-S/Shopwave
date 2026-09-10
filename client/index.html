@@ -495,21 +495,189 @@ body.dark footer{background:#111009}
 // ── DATA ──
 // API Base URL
 const API = 'https://shopwave-2wet.onrender.com/api'
-const PRODUCTS = [
-  {id:1,name:'Wireless Noise-Cancelling Headphones',cat:'Electronics',price:4999,oldPrice:7999,emoji:'🎧',img:'/images/headphones.jpg',rating:4.8,reviews:342,badge:'sale',desc:'Premium sound quality with 30hr battery life and active noise cancellation for immersive listening.',sizes:['Black','White','Navy'],tags:['wireless','audio']},
-  {id:2,name:'Smart Fitness Tracker Band',cat:'Electronics',price:2499,oldPrice:3499,emoji:'⌚',rating:4.5,reviews:218,badge:'new',desc:'Track heart rate, sleep, steps and more. Water-resistant with 7-day battery. Compatible with iOS & Android.',sizes:['S/M','L/XL'],tags:['fitness','wearable']},
-  {id:3,name:'Premium Cotton Oversized Tee',cat:'Fashion',price:799,oldPrice:1299,emoji:'👕',rating:4.3,reviews:156,badge:'sale',desc:'Ultra-soft 100% cotton oversized fit. Pre-washed for extra comfort. Available in 8 colours.',sizes:['XS','S','M','L','XL'],tags:['clothing','casual']},
-  {id:4,name:'Minimalist Leather Wallet',cat:'Fashion',price:1499,emoji:'👜',rating:4.7,reviews:89,badge:'hot',desc:'Slim RFID-blocking genuine leather wallet. Holds up to 8 cards with a hidden cash slot.',sizes:['Brown','Black','Tan'],tags:['accessories','leather']},
-  {id:5,name:'Ceramic Coffee Mug Set',cat:'Home',price:649,oldPrice:999,emoji:'☕',rating:4.6,reviews:203,badge:'sale',desc:'Set of 2 hand-crafted ceramic mugs. Microwave and dishwasher safe. 350ml capacity.',sizes:['Set of 2','Set of 4'],tags:['kitchen','ceramics']},
-  {id:6,name:'Vitamin C Brightening Serum',cat:'Beauty',price:899,oldPrice:1299,emoji:'🧴',rating:4.4,reviews:412,badge:'new',desc:'10% Vitamin C + Hyaluronic Acid formula for glowing skin. Dermatologist tested, fragrance free.',sizes:['30ml','60ml'],tags:['skincare','vitamin-c']},
-  {id:7,name:'Yoga Mat — Non-Slip Pro',cat:'Sports',price:1299,emoji:'🧘',rating:4.9,reviews:567,badge:'hot',desc:'6mm thick non-slip mat with alignment lines. Eco-friendly TPE material, includes carry strap.',sizes:['Standard','XL Wide'],tags:['yoga','fitness']},
-  {id:8,name:'Bestseller Novel Collection',cat:'Books',price:1199,oldPrice:1799,emoji:'📚',rating:4.8,reviews:94,badge:'sale',desc:'Curated set of 3 bestselling fiction novels. Perfect for book lovers and gifting.',sizes:['Fiction Set','Mystery Set'],tags:['reading','fiction']},
-  {id:9,name:'4K Action Camera',cat:'Electronics',price:12999,oldPrice:17999,emoji:'📷',rating:4.6,reviews:178,badge:'sale',desc:'4K/60fps waterproof action camera with image stabilization, wide angle lens and 2-inch touchscreen.',sizes:['Camera Only','With Accessories'],tags:['camera','outdoor']},
-  {id:10,name:'Linen Blend Blazer',cat:'Fashion',price:3299,emoji:'🧥',rating:4.5,reviews:72,badge:'new',desc:'Relaxed linen-blend blazer perfect for office or casual wear. Breathable and wrinkle-resistant.',sizes:['S','M','L','XL'],tags:['blazer','formal']},
-  {id:11,name:'Scented Soy Candle Set',cat:'Home',price:1099,emoji:'🕯️',rating:4.7,reviews:234,badge:'hot',desc:'Set of 4 hand-poured soy wax candles with calming aromas. 45hr burn time each. Gift-ready packaging.',sizes:['Floral Set','Woody Set'],tags:['home-decor','candles']},
-  {id:12,name:'Resistance Bands Set',cat:'Sports',price:599,oldPrice:899,emoji:'💪',rating:4.4,reviews:389,badge:'sale',desc:'Set of 5 latex resistance bands with varying tension levels. Includes carry bag and exercise guide.',sizes:['Light Set','Heavy Set'],tags:['gym','workout']},
-];
 
+const PRODUCTS = [
+  {
+    id:1,
+    name:'Wireless Noise-Cancelling Headphones',
+    cat:'Electronics',
+    price:4999,
+    oldPrice:7999,
+    emoji:'🎧',
+    img:'/images/headphones.jpg',
+    rating:4.8,
+    reviews:342,
+    badge:'sale',
+    desc:'Premium sound quality with 30hr battery life and active noise cancellation for immersive listening.',
+    sizes:['Black','White','Navy'],
+    tags:['wireless','audio']
+  },
+  {
+    id:2,
+    name:'Smart Fitness Tracker Band',
+    cat:'Electronics',
+    price:2499,
+    oldPrice:3499,
+    emoji:'⌚',
+    img:'/images/fitness-band.jpg',
+    rating:4.5,
+    reviews:218,
+    badge:'new',
+    desc:'Track heart rate, sleep, steps and more. Water-resistant with 7-day battery. Compatible with iOS & Android.',
+    sizes:['S/M','L/XL'],
+    tags:['fitness','wearable']
+  },
+  {
+    id:3,
+    name:'Premium Cotton Oversized Tee',
+    cat:'Fashion',
+    price:799,
+    oldPrice:1299,
+    emoji:'👕',
+    img:'/images/tshirt.jpg',
+    rating:4.3,
+    reviews:156,
+    badge:'sale',
+    desc:'Ultra-soft 100% cotton oversized fit. Pre-washed for extra comfort. Available in 8 colours.',
+    sizes:['XS','S','M','L','XL'],
+    tags:['clothing','casual']
+  },
+  {
+    id:4,
+    name:'Minimalist Leather Wallet',
+    cat:'Fashion',
+    price:1499,
+    oldPrice:null,
+    emoji:'👜',
+    img:'/images/wallet.jpg',
+    rating:4.7,
+    reviews:89,
+    badge:'hot',
+    desc:'Slim RFID-blocking genuine leather wallet. Holds up to 8 cards with a hidden cash slot.',
+    sizes:['Brown','Black','Tan'],
+    tags:['accessories','leather']
+  },
+  {
+    id:5,
+    name:'Ceramic Coffee Mug Set',
+    cat:'Home',
+    price:649,
+    oldPrice:999,
+    emoji:'☕',
+    img:'/images/mug.jpg',
+    rating:4.6,
+    reviews:203,
+    badge:'sale',
+    desc:'Set of 2 hand-crafted ceramic mugs. Microwave and dishwasher safe. 350ml capacity.',
+    sizes:['Set of 2','Set of 4'],
+    tags:['kitchen','ceramics']
+  },
+  {
+    id:6,
+    name:'Vitamin C Brightening Serum',
+    cat:'Beauty',
+    price:899,
+    oldPrice:1299,
+    emoji:'🧴',
+    img:'/images/serum.jpg',
+    rating:4.4,
+    reviews:412,
+    badge:'new',
+    desc:'10% Vitamin C + Hyaluronic Acid formula for glowing skin. Dermatologist tested, fragrance free.',
+    sizes:['30ml','60ml'],
+    tags:['skincare','vitamin-c']
+  },
+  {
+    id:7,
+    name:'Yoga Mat — Non-Slip Pro',
+    cat:'Sports',
+    price:1299,
+    oldPrice:null,
+    emoji:'🧘',
+    img:'/images/yoga-mat.jpg',
+    rating:4.9,
+    reviews:567,
+    badge:'hot',
+    desc:'6mm thick non-slip mat with alignment lines. Eco-friendly TPE material, includes carry strap.',
+    sizes:['Standard','XL Wide'],
+    tags:['yoga','fitness']
+  },
+  {
+    id:8,
+    name:'Bestseller Novel Collection',
+    cat:'Books',
+    price:1199,
+    oldPrice:1799,
+    emoji:'📚',
+    img:'/images/books.jpg',
+    rating:4.8,
+    reviews:94,
+    badge:'sale',
+    desc:'Curated set of 3 bestselling fiction novels. Perfect for book lovers and gifting.',
+    sizes:['Fiction Set','Mystery Set'],
+    tags:['reading','fiction']
+  },
+  {
+    id:9,
+    name:'4K Action Camera',
+    cat:'Electronics',
+    price:12999,
+    oldPrice:17999,
+    emoji:'📷',
+    img:'/images/camera.jpg',
+    rating:4.6,
+    reviews:178,
+    badge:'sale',
+    desc:'4K/60fps waterproof action camera with image stabilization, wide angle lens and 2-inch touchscreen.',
+    sizes:['Camera Only','With Accessories'],
+    tags:['camera','outdoor']
+  },
+  {
+    id:10,
+    name:'Linen Blend Blazer',
+    cat:'Fashion',
+    price:3299,
+    oldPrice:null,
+    emoji:'🧥',
+    img:'/images/blazer.jpg',
+    rating:4.5,
+    reviews:72,
+    badge:'new',
+    desc:'Relaxed linen-blend blazer perfect for office or casual wear. Breathable and wrinkle-resistant.',
+    sizes:['S','M','L','XL'],
+    tags:['blazer','formal']
+  },
+  {
+    id:11,
+    name:'Scented Soy Candle Set',
+    cat:'Home',
+    price:1099,
+    oldPrice:null,
+    emoji:'🕯️',
+    img:'/images/candle.jpg',
+    rating:4.7,
+    reviews:234,
+    badge:'hot',
+    desc:'Set of 4 hand-poured soy wax candles with calming aromas. 45hr burn time each. Gift-ready packaging.',
+    sizes:['Floral Set','Woody Set'],
+    tags:['home-decor','candles']
+  },
+  {
+    id:12,
+    name:'Resistance Bands Set',
+    cat:'Sports',
+    price:599,
+    oldPrice:899,
+    emoji:'💪',
+    img:'/images/bands.jpg',
+    rating:4.4,
+    reviews:389,
+    badge:'sale',
+    desc:'Set of 5 latex resistance bands with varying tension levels. Includes carry bag and exercise guide.',
+    sizes:['Light Set','Heavy Set'],
+    tags:['gym','workout']
+  },
+];
 let cart = JSON.parse(localStorage.getItem('sw_cart') || '[]');
 let wishlist = JSON.parse(localStorage.getItem('sw_wl') || '[]');
 let user = JSON.parse(localStorage.getItem('sw_user') || 'null');
@@ -655,7 +823,14 @@ function openProduct(id) {
   const disc = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : 0;
   document.getElementById('pdContent').innerHTML = `
     <div>
-      <div class="pd-img-big">${p.emoji}</div>
+      <div class="pd-img-big" style="overflow:hidden;padding:0">
+  <img 
+    src="${p.img}" 
+    alt="${p.name}"
+    onerror="this.style.display='none'"
+    style="width:100%;height:100%;object-fit:cover;"
+  />
+</div>
       <div class="pd-thumbs">
         ${[1,2,3].map((n,i) => `<div class="pd-thumb${i===0?' active':''}">${p.emoji}</div>`).join('')}
       </div>
