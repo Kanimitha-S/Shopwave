@@ -496,7 +496,7 @@ body.dark footer{background:#111009}
 // API Base URL
 const API = 'https://shopwave-2wet.onrender.com/api'
 const PRODUCTS = [
-  {id:1,name:'Wireless Noise-Cancelling Headphones',cat:'Electronics',price:4999,oldPrice:7999,emoji:'🎧',rating:4.8,reviews:342,badge:'sale',desc:'Premium sound quality with 30hr battery life and active noise cancellation for immersive listening.',sizes:['Black','White','Navy'],tags:['wireless','audio']},
+  {id:1,name:'Wireless Noise-Cancelling Headphones',cat:'Electronics',price:4999,oldPrice:7999,emoji:'🎧',img:'/images/headphones.jpg',rating:4.8,reviews:342,badge:'sale',desc:'Premium sound quality with 30hr battery life and active noise cancellation for immersive listening.',sizes:['Black','White','Navy'],tags:['wireless','audio']},
   {id:2,name:'Smart Fitness Tracker Band',cat:'Electronics',price:2499,oldPrice:3499,emoji:'⌚',rating:4.5,reviews:218,badge:'new',desc:'Track heart rate, sleep, steps and more. Water-resistant with 7-day battery. Compatible with iOS & Android.',sizes:['S/M','L/XL'],tags:['fitness','wearable']},
   {id:3,name:'Premium Cotton Oversized Tee',cat:'Fashion',price:799,oldPrice:1299,emoji:'👕',rating:4.3,reviews:156,badge:'sale',desc:'Ultra-soft 100% cotton oversized fit. Pre-washed for extra comfort. Available in 8 colours.',sizes:['XS','S','M','L','XL'],tags:['clothing','casual']},
   {id:4,name:'Minimalist Leather Wallet',cat:'Fashion',price:1499,emoji:'👜',rating:4.7,reviews:89,badge:'hot',desc:'Slim RFID-blocking genuine leather wallet. Holds up to 8 cards with a hidden cash slot.',sizes:['Brown','Black','Tan'],tags:['accessories','leather']},
@@ -595,7 +595,17 @@ function productCardHTML(p, showWish = true) {
   const inWL = wishlist.includes(p.id);
   const disc = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : 0;
   return `<div class="product-card" onclick="openProduct(${p.id})">
-    <div class="product-img" style="background:var(--light);display:flex;align-items:center;justify-content:center;font-size:64px;height:200px">${p.emoji}</div>
+    <div class="product-img-wrap">
+      <img 
+        src="${p.img}" 
+        alt="${p.name}"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        style="width:100%;height:200px;object-fit:cover;display:block;"
+      />
+      <div style="display:none;width:100%;height:200px;align-items:center;justify-content:center;font-size:64px;background:var(--light)">
+        ${p.emoji}
+      </div>
+    </div>
     ${p.badge ? `<span class="product-badge badge-${p.badge}">${p.badge === 'sale' ? `-${disc}%` : p.badge}</span>` : ''}
     ${showWish ? `<button class="wish-btn" style="position:absolute;top:10px;right:10px;font-size:20px" onclick="event.stopPropagation();toggleWish(${p.id})">${inWL ? '❤️' : '🤍'}</button>` : ''}
     <div class="product-info">
